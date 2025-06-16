@@ -1,0 +1,23 @@
+{
+  "name": "feenx-nix-dood",
+  "build": {
+   "dockerfile": "Dockerfile",
+   "context": ".."
+  },
+
+  "userEnvProbe": "loginShell",
+  "postCreateCommand": "cat ~/greeting.txt",
+
+  "customizations": {
+   "vscode": {
+      "extensions": [
+         "ms-azuretools.vscode-docker",
+         "arrterian.nix-env-selector"
+      ]
+   }
+  },
+
+  "features": {
+   "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  }
+}
