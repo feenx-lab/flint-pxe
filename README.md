@@ -146,8 +146,16 @@ Feel free to check out the [issues page](https://github.com/feenx-lab/flint-pxe/
 
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
-<p align="right"><a href="#readme-top">⬆️Back to top</a></p>
+## 📦 Image Availability
 
+| Registry | Image |
+|----------|-------|
+| GitHub Container Registry | `ghcr.io/feenx-lab/flint-pxe` |
+
+> [!NOTE]
+> Let us know if you'd like us to publish on Docker Hub as well by opening an issue or discussion.
+
+<p align="right"><a href="#readme-top">⬆️Back to top</a></p>
 
 <!-- LINKS & IMAGES -->
 [relative-repo-url]: feenx-lab/flint-pxe
