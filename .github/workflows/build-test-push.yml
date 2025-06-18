@@ -60,7 +60,7 @@ jobs:
           docker run --rm ${{ env.TEST_TAG }} -d 192.168.1.1/24 -t
 
       - name: Build and push
-        id: build-and-push
+        id: push
         if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v6
         with:
