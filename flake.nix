@@ -18,6 +18,11 @@
             docker
             docker-compose
             neovim
+            dnsmasq
+            wakeonlan
+            ipcalc
+            nmap
+            traceroute
           ];
         };
       }

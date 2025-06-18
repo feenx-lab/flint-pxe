@@ -5,6 +5,11 @@
    "context": ".."
   },
 
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--net=host"
+  ],
+
   "userEnvProbe": "loginShell",
   "postCreateCommand": "cat ~/greeting.txt",
 
