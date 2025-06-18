@@ -13,7 +13,7 @@ env:
   TEST_TAG: ${{ github.repository }}:test
 
 jobs:
-  ci:
+  ci-cd:
     runs-on: ubuntu-latest
     permissions:
       contents: read
