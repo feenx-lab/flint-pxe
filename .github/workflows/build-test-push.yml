@@ -61,7 +61,7 @@ jobs:
 
       - name: Build and push
         id: push
-        if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v6
         with:
           context: ./src
