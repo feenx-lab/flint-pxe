@@ -37,10 +37,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest
             type=sha,prefix=,suffix=,format=short
 
       - name: Build and export to Docker
@@ -61,7 +59,7 @@ jobs:
 
       - name: Build and push
         id: push
-        if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
+        # if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v6
         with:
           context: ./src
@@ -70,7 +68,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation
-        if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
+        # if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
         uses: actions/attest-build-provenance@v2
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
