@@ -92,9 +92,9 @@ while [[ $# -gt 0 ]]; do
       shift # skip argument
       ;;
     -v|--talos-version)
-      SANITIZED_VERSION=$(echo $2 | sed 's/^v/')
+      SANITIZED_VERSION=$(echo $2 | sed 's/^v//')
       if [[ $SANITIZED_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-         TALOS_VERSION="$2"
+         TALOS_VERSION="$SANITIZED_VERSION"
       else
          echo "Invalid talos version number"
          exit 1
