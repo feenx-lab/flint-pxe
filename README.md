@@ -50,9 +50,9 @@
 ## 🛠️ Get Started
 
 <a id="get-started"></a>
-To start a PXE server using the default options:
+To start a PXE server using the default options in your `192.168.1.0/24` subnet:
 ```bash
-docker run -it --rm --cap-add=NET_ADMIN --net=host ghcr.io/feenx-lab/flint-pxe
+docker run -it --rm --cap-add=NET_ADMIN --net=host ghcr.io/feenx-lab/flint-pxe --network 192.168.1.0/24
 ```
 
 > [!IMPORTANT]
@@ -86,7 +86,7 @@ It’s meant to be a fast, ephemeral, local PXE boot solution to stand up Talos 
 
 | Flag                             | Description                                                        |
 |----------------------------------|--------------------------------------------------------------------|
-| `--dhcp-server`, `-d`            | Upstream DHCP server IP in CIDR notation (e.g: `192.168.1.1/24`)   |
+| `--network`, `-n`                | Subnet in CIDR notation (e.g: `192.168.1.0/24`)                    |
 
 ### Optional
 
@@ -95,12 +95,12 @@ It’s meant to be a fast, ephemeral, local PXE boot solution to stand up Talos 
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | `--arch`, `-a`                   | Architecture to use from the Image Factory (default: `amd64`)                                                                   |
 | `--base-url`, `-b`               | Base URL to fetch the iPXE script from (default: `https://pxe.factory.talos.dev/pxe`)                                           |
+| `--dry-run`, `-d`                | Enables test mode (dry-run, no changes applied) (default: `false`)                                                              |
+| `--help`, `-h`                   | Prints help message                                                                                                             |
 | `--mac-address`, `-m`            | MAC address for Wake-on-LAN. Can be used multiple times (default: none)                                                         |
 | `--ipxe-url-override`, `-o`      | Override the full URL for the iPXE script (default: none)                                                                       |
 | `--schematic-id`, `-s`           | The Talos Image Factory schematic ID to boot from (default: `376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba`) |
 | `--talos-version`, `-v`          | Talos version number to use (default: `1.10.4`)                                                                                 |
-| `--test`, `-t`                   | Enables test mode (dry-run, no changes applied) (default: `false`)                                                              |
-| `--help`, `-h`                   | Prints help message                                                                                                             |
 
 ## 🧪 Examples
 
@@ -110,7 +110,7 @@ It’s meant to be a fast, ephemeral, local PXE boot solution to stand up Talos 
 ```bash
 docker run -it --rm --cap-add=NET_ADMIN --net=host \
   ghcr.io/feenx-lab/flint-pxe \
-  --dhcp-server 192.168.1.1/24
+  --network 192.168.1.0/24
 ```
 
 ### 2. Run flint-pxe + Wake target machines
@@ -118,7 +118,7 @@ docker run -it --rm --cap-add=NET_ADMIN --net=host \
 ```bash
 docker run -it --rm --cap-add=NET_ADMIN --net=host \
   ghcr.io/feenx-lab/flint-pxe \
-  --dhcp-server 192.168.1.1/24 \
+  --network 192.168.1.0/24 \
   --mac-address aa:bb:cc:dd:ee:ff \
   --mac-address a1:b2:c3:d4:e5:f6
 ```
@@ -128,7 +128,7 @@ docker run -it --rm --cap-add=NET_ADMIN --net=host \
 ```bash
 docker run -it --rm --cap-add=NET_ADMIN --net=host \
   ghcr.io/feenx-lab/flint-pxe \
-  --dhcp-server 192.168.1.1/24 \
+  --network 192.168.1.0/24 \
   --arch arm64 \
   --schematic-id 09dbcadc567d93b02a1610c70d651fadbe56aeac3aaca36bc488a38f3fffe99d
 ```
