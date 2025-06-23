@@ -57,7 +57,7 @@ jobs:
         id: test
         run: |
           docker run --rm ${{ env.TEST_TAG }} -h
-          docker run --rm ${{ env.TEST_TAG }} -d 192.168.1.1/24 -t
+          docker run --rm ${{ env.TEST_TAG }} -n 192.168.1.0/24 -t
 
       - name: Build and push
         id: push
